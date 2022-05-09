@@ -38,9 +38,10 @@ function setup() {
         navy += 100;
     }
 
-    button = createButton('Debug gates to console');
-    button.position(0, 0);
-    button.mousePressed(showgates);
+    //DEBUGIN BUTTON
+    // button = createButton('Debug gates to console');
+    // button.position(0, 0);
+    // button.mousePressed(showgates);
 
 }
 
