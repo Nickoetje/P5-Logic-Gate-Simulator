@@ -156,6 +156,20 @@ class Gate {
                 noFill();
                 rect(this.x, this.y, this.width, this.lenght);
                 break;
+            case 8://nor
+                fill(0);
+                if (!this.locked) {
+                    stroke(0, 0);
+                } else {
+                    stroke(0, 0, 255);
+                }
+                if(this.selected){
+                    stroke(254, 140, 0);
+                }
+                image(nor, this.x, this.y);
+                noFill();
+                rect(this.x, this.y, this.width, this.lenght);
+                break;
             default://custom gate draw box
                 //write name in gate unless hud
                 if (this.name != 'n') {
@@ -276,7 +290,7 @@ class Gate {
                         }
                     }
                     let count = 0;
-                    if (inverted == jointvalues.length) {
+                    if (inverted == jointvalues.length && sum.length == 1) {
                         invertedB = true;
                         for (let i = 0; i < temp.length; i++) {
                             if (temp[i] == 1) {

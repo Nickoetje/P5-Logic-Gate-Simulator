@@ -1,4 +1,4 @@
-//TODO: save state to cookies/file, selection copy paste
+//TODO: save state to cookies/file
 
 //preload images
 function preload() {
