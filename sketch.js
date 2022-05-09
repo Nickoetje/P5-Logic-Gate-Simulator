@@ -23,6 +23,7 @@ function setup() {
     lastpos = [0, 0];
     dragging = false;
     selection = [];
+    clipboard = [];
 
     //nav pos
     hudx = 10;
@@ -129,8 +130,10 @@ function draw() {
     }
 
 }
+
 function keyPressed() {
     if (keyCode === DELETE) {
+        //delete selected gates
         let invalidGates = [];
         gates.forEach(gate => {
             if(gate.selected){
@@ -140,7 +143,31 @@ function keyPressed() {
         invalidGates.forEach(inval => {
             removeInvalidGate(inval, gates);
         });
-    } 
+        return;
+    }
+    if(keyCode == 67){
+        //c copy check if any gates are selected
+        clipboard = [];//clear clipboard
+        gates.forEach(gate => {
+            if(gate.selected){
+                clipboard.push([gate.id, gate.type, gate.x, gate.y]);
+            }
+        });
+        return;
+    }
+    if(keyCode == 86){
+        //v paste new gates from clipboard
+        clipboard.forEach(gate => {
+            let temp = new Gate("", newId(), gate[1], gate[2] + 20, gate[3]+ 10);
+            temp.selected = true;
+            temp.locked = true;
+            gates.push(temp);
+            let gateIndex = gates.findIndex(e => e.id === gate[0]);
+            gates[gateIndex].selected = false;
+            gates[gateIndex].locked = false;
+        });
+        return;
+    }
 }
 
 function mousePressed() {
@@ -418,7 +445,7 @@ function showgates() {
 }
 
 function newId() {
-    id = 4;
+    id = 6;
     while (gates[gates.findIndex(x => x.id === id)]) {
         id++;
     }
