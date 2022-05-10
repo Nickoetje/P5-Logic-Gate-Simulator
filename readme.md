@@ -1,5 +1,5 @@
 # P5-Logic-Gate-Simulator
-A logic gate simulator made in Javascript with the P5 libary
+A logic gate simulator made in Javascript with the P5 library
 
 P5 libary: https://p5js.org/
 
